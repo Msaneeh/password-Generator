@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random password Generator</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/b865ddf907.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="text">Random password Generator <br>for strong password</div>
+        <div class="input-data">
+            <div class="display">
+                <input type="text">
+                <span class="far fa-copy" onclick="copy()"></span>
+                <span class="fas fa-copy" onclick="copy()"></span>
+            </div>
+            <button>Generate password</button>
+        </div>
+    </div>
+
+    <script>  
+        const display = document.querySelector("input"),
+        button = document.querySelector("button"),
+        copyBtn = document.querySelector("span.far"),
+        copyActive = document.querySelector("span.fas");
+        let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+~';?><,./#";
+        button.onclick = ()=>{
+            let i,
+            randomPassoword = "";
+            copyBtn.style.display = "none";
+            copyActive.style.display = "block";
+            for (i = 0; i < 16; i++) {
+                randomPassoword = randomPassoword + chars.charAt(
+                    Math.floor(Math.random() * chars.length)
+                );
+            }
+            display.value = randomPassoword;
+        }
+        function copy(){
+            copyBtn.style.display = "block";
+            copyActive.style.display = "none";
+            display.select();
+            document.execCommand("copy");
+        }
+    </script>
+
+</body>
+</html>
